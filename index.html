@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GP PARTNERS</title>
+	<link rel="icon" type="image/png" href="img/fav-icon/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="/img/fav-icon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/fav-icon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/fav-icon/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/slick.min.js"></script>
 	<link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/slick-theme.css">
-
 </head>
+
 <body>
     <header>
         <div class="container">
-            <div class="logo">
-                <img src="img/logo.png" alt="GP PARTNERS Logo">
-            </div>
+            <a href="index.html">
+             <img src="img/logo.png" alt="My Logo" class="logo">
+           </a>
             <nav>
                 <ul>
                   <li><a href="index.html">Home</a></li>
@@ -28,17 +33,35 @@
                 </ul>
             </nav>
         </div>
-    </header>
     
-    <section id="home" class="slideshow-container">
-        <div class="container">
-		    <div class="photo-slider img">
-                <img src="img/index/slide1.jpg" alt="Business Growth">
-                <img src="img/index/slide2.jpg" alt="Team Collaboration">
-                <img src="img/index/slide3.jpg" alt="Success Strategies">
-            </div>
-        </div>
-    </section>
+	</header>
+    
+	<div class="slideshow-container">
+		<div class="mySlides fade">
+			<img src="img/index/slide1.jpg" style="width:100%">
+			<div class="text">Welcome to My Website</div>
+		</div>
+
+		<div class="mySlides fade">
+			<img src="img/index/slide2.jpg" style="width:100%">
+			<div class="text">Explore Our Services</div>
+		</div>
+
+		<div class="mySlides fade">
+			<img src="img/index/slide3.jpg" style="width:100%">
+			<div class="text">Contact Us Today</div>
+		</div>
+		<!-- Navigation buttons -->
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		<!-- Dots -->
+		<div style="text-align:center; margin-top:10px;">
+			<span class="dot" onclick="currentSlide(1)"></span> 
+			<span class="dot" onclick="currentSlide(2)"></span> 
+			<span class="dot" onclick="currentSlide(3)"></span> 
+		</div>
+	</div>
+
 	<section id="home" class="hero">
         <div class="hero-content">
 		<h1>Empowering Your Business for Success</h1>
@@ -226,5 +249,63 @@
             <p> Copyright &copy; GP PARTNERS 2025.  All rights reserved. Designed & Developed by: B Solution Technology </p>
         </div>
     </footer>
+	
+	<script>
+		let slideIndex = 1;
+		let autoSlideInterval;
+			showSlides(slideIndex);
+			startAutoSlide();
+
+		function plusSlides(n) {
+				clearInterval(autoSlideInterval);
+				showSlides(slideIndex += n);
+				startAutoSlide();
+				}
+
+		function currentSlide(n) {
+				clearInterval(autoSlideInterval);
+				showSlides(slideIndex = n);
+				startAutoSlide();
+				}
+
+		function showSlides(n) {
+		let i;
+		let slides = document.getElementsByClassName("mySlides");
+		let dots = document.getElementsByClassName("dot");
+		if (n > slides.length) slideIndex = 1;    
+		if (n < 1) slideIndex = slides.length;
+		for (i = 0; i < slides.length; i++) slides[i].style.display = "none";  
+		for (i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
+				slides[slideIndex-1].style.display = "block";  
+				dots[slideIndex-1].className += " active";
+		}
+
+		function startAutoSlide() {
+				autoSlideInterval = setInterval(function() {
+				plusSlides(1);
+				}, 4000); // 4 seconds
+				}
+
+// ✅ Swipe detection for mobile
+
+		let touchStartX = 0;
+		let touchEndX = 0;
+		const slideshow = document.getElementById('slideshow');
+
+		slideshow.addEventListener('touchstart', e => {
+		touchStartX = e.changedTouches[0].screenX;
+		});
+
+		slideshow.addEventListener('touchend', e => {
+		touchEndX = e.changedTouches[0].screenX;
+		handleSwipe();
+		});
+
+		function handleSwipe() {
+		if (touchEndX < touchStartX - 50) { plusSlides(1); }  // Swipe Left
+		if (touchEndX > touchStartX + 50) { plusSlides(-1); } // Swipe Right
+		}
+</script>
+
 </body>
 </html>
