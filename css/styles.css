@@ -4,10 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-.logo {
-  width: 120px;   /* You can change the size */
-  height: auto;
-}
+
 /* Body and overall layout */
 body {
     font-family: 'Arial', sans-serif;
@@ -27,6 +24,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+	
 }
 
 header .logo img {
@@ -48,29 +46,124 @@ header nav a {
 header nav a:hover {
     color: #e67e22; /* Orange hover effect */
 }
-
-/* Hero Section */}
-.photo-slider {
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-    overflow: hidden;
+.logo {
+  height: 50px; /* Adjust size */
+  width: auto; /* Keeps aspect ratio */
 }
 
-.photo-slider img {
-    width: 100%;
-    display: block;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #333;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
 }
 
 
-.hero-content h1 {
+/* Photo slide */
+
+
+.slideshow-container {
+  max-width: 80%;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+
+.mySlides {
+  display: none;
+  position: relative;
+}
+
+.mySlides img {
+  width: 100%;
+  height: auto;
+}
+.text {
+	color: #e67e22;
+	font-size: 24px;
+	padding: 16px
+	position: absolute;
+	bottom: 8%
+	text-align: center;
+	left: 5%
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 8px;
+}
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  background-color: rgba(0,0,0,0.8);
+  border-radius: 50%;
+  user-select: none;
+}
+
+.next { right: 10px; }
+
+.prev { left: 10px; }
+
+.prev:hover, .next:hover {
+  background-color: #e67e22;
+}
+/* Dots */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .text {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+
+
+
+/* Hero Section */
+
+.hero-content h1  {
     font-size: 3rem;
 	text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 30px;
 	
 	
@@ -81,7 +174,8 @@ header nav a:hover {
     background-color: #e67e22; /* Orange button */
     color: #ffffff; /* White text */
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
+	padding: 5px;
 
 }
 
