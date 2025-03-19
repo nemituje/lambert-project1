@@ -1,14 +1,15 @@
-$(document).ready(function(){
-    $('.photo-slider').slick({
-        vertical: false,          // Enable vertical slide
-        infinite: true,          // Infinite scroll
-        speed: 500,              // Speed of sliding
-        slidesToShow: 1,         // Show one image at a time
-        slidesToScroll: 1,       // Scroll one image at a time
-        autoplay: true,          // Enable auto slide
-        autoplaySpeed: 3000,     // Speed of auto slide in ms
-        arrows: true,           // Disable arrows if not needed
-        dots: false,              // Enable dots for navigation
-        adaptiveHeight: true     // Adapt height of each slide
-    });
-});
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let slides = document.getElementsByClassName("mySlides");
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex - 1].style.display = "block";  
+  setTimeout(showSlides, 3000); // Change image every 3 seconds
+}
+</script>
