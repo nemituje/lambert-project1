@@ -507,3 +507,251 @@ section{ padding-block:clamp(3.25rem,7vw,6rem); }
 }
 @media (max-width:900px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
 @media (max-width:520px){ .footer-grid{ grid-template-columns:1fr; } }
+
+
+/* =========================================================
+   LEGACY COMPATIBILITY LAYER
+   Restyles the classes used by about.html, blog.html,
+   contact.html, services.html, team.html and srvc/* pages
+   onto the new token system, so their HTML needs no edits.
+   New pages should not rely on this section.
+   ========================================================= */
+
+/* ---- layout containers used by legacy markup ---- */
+.legacy .container,
+header .container,
+footer .container{
+  width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--pad);
+}
+.legacy .container{ overflow:visible; }
+
+/* ---- legacy header markup (header > .container > a.logo + nav) ---- */
+header{
+  background:var(--paper); color:var(--ink);
+  border-bottom:1px solid var(--line);
+  padding:.9rem 0;
+}
+header .logo img{ height:44px; width:auto; }
+header nav a{
+  color:var(--text); text-decoration:none; font-weight:500;
+  font-size:.9rem; padding:.4rem 0;
+  transition:color .18s var(--ease);
+}
+header nav a:hover{ color:var(--amber-text); }
+header nav a:focus-visible,
+footer a:focus-visible,
+.contact-form button:focus-visible,
+input:focus-visible,
+textarea:focus-visible{
+  outline:2px solid var(--amber-text); outline-offset:3px;
+}
+
+/* ---- legacy hero / generic sections ---- */
+.hero{
+  background:var(--paper); padding-block:clamp(2.5rem,6vw,4.5rem);
+}
+.hero-content h1{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(2.1rem,4.6vw,3.4rem); line-height:1.08;
+  text-align:left; color:var(--ink); margin-bottom:1.25rem;
+}
+.hero-content p{ color:var(--muted); max-width:70ch; }
+.hero-content .btn,
+.contact-cta .btn{
+  display:inline-flex; align-items:center; min-height:48px;
+  padding:.85rem 1.6rem; border-radius:var(--r);
+  background:var(--amber); color:var(--ink);
+  font-size:.9rem; font-weight:600; text-decoration:none; border:0;
+  transition:background .18s var(--ease);
+}
+.hero-content .btn:hover{ background:#e08a45; }
+
+.section h1, .our-team h1{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(1.75rem,3.4vw,2.65rem);
+  text-align:left; color:var(--ink);
+}
+.section{ background:var(--paper); }
+section{ background:var(--paper); color:var(--text); }
+
+/* ---- legacy slideshow (pre-redesign markup) ---- */
+.slideshow-container{ max-width:100%; }
+.legacy-slideshow .text,
+.slideshow-container .text{
+  position:absolute; bottom:8%; left:5%;
+  max-width:min(80%, 40ch);
+  color:var(--on-ink); font-size:clamp(1rem,2vw,1.4rem);
+  padding:.9rem 1.2rem; text-align:left;
+  background:rgba(11,19,27,.72); border-radius:var(--r);
+  font-family:var(--serif);
+}
+.slideshow-container .prev,
+.slideshow-container .next{
+  width:44px; height:44px; padding:0;
+  display:grid; place-items:center;
+  color:var(--ink); font-size:1rem;
+  background:var(--paper-2); border-radius:var(--r);
+  transition:background .18s var(--ease), color .18s var(--ease);
+}
+.slideshow-container .next{ right:10px; }
+.slideshow-container .prev{ left:10px; }
+.slideshow-container .prev:hover,
+.slideshow-container .next:hover{ background:var(--amber); color:var(--ink); }
+.slideshow-container .dot{
+  width:30px; height:15px; margin:0; border-radius:0;
+  background:transparent; border:0; padding:0;
+}
+.slideshow-container .dot::before{
+  content:""; display:block; width:100%; height:1px; background:var(--line-strong);
+}
+.slideshow-container .dot.active::before,
+.slideshow-container .dot:hover::before{ background:var(--amber); height:2px; }
+
+/* ---- legacy service grids & detail pages ---- */
+.services-grid{
+  grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:clamp(1.25rem,3vw,2rem);
+}
+.service-item{
+  background:var(--paper-2); border:1px solid var(--line);
+  padding:1.5rem; border-radius:var(--r); text-align:left;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.service-item:hover{ transform:translateY(-4px); box-shadow:0 10px 28px rgba(16,26,36,.10); }
+.service-item img{ aspect-ratio:3/2; object-fit:cover; border-radius:var(--r); margin-bottom:1rem; }
+.service-item h3{ font-family:var(--serif); font-weight:400; color:var(--ink); font-size:1.25rem; }
+.service-item p{ color:var(--muted); font-size:.95rem; }
+.service-item a{ font-size:.9rem; color:var(--amber-text); }
+
+.page-banner{
+  background:var(--ink-2); color:var(--on-ink); text-align:left;
+  padding:clamp(3rem,7vw,5rem) 0;
+}
+.page-banner h1, .page-banner h2{ color:var(--on-ink); font-family:var(--serif); font-weight:400; }
+
+.service-content{ background:var(--paper); padding:clamp(2rem,5vw,3.5rem) 0; }
+.service-content h2{ font-family:var(--serif); font-weight:400; color:var(--ink); text-align:left; }
+.service-content li{ list-style:none; padding:.5rem 0; font-weight:500; color:var(--text); }
+
+.service-single-content{ background:var(--paper-2); padding:clamp(1.25rem,4vw,3rem); }
+.service-single-content h2{
+  background:transparent; color:var(--ink); border-radius:0;
+  font-family:var(--serif); font-weight:400; text-align:left; padding:0;
+}
+.service-single-content h5{
+  background:transparent; color:var(--amber-text); text-align:left;
+  margin-left:0; font-family:var(--mono); font-size:.72rem;
+  letter-spacing:.13em; text-transform:uppercase; padding:0;
+}
+.service-single-content p{ background:transparent; margin-left:0; padding:0; color:var(--text); }
+.service-single-slider img{ border-radius:var(--r); }
+
+.benefit{ gap:clamp(1.5rem,4vw,3rem); margin-top:2rem; }
+.benefit li{ margin-left:1.25rem; }
+
+.why-choose-service{ background:var(--paper-2); padding:clamp(1.25rem,4vw,3rem); margin-top:2rem; margin-left:0; }
+.why-choose-service h3{ font-family:var(--serif); font-weight:400; color:var(--ink); text-align:left; margin-top:1.75rem; }
+.why-choose-service h5{ color:var(--text); }
+.why-choose-service .sub.service{ margin-top:1.25rem; padding:1rem; background:var(--paper); border-radius:var(--r); }
+
+.sector-team{ background:var(--paper); }
+.sector-team h2{ text-align:left; margin-left:0; font-family:var(--serif); font-weight:400; color:var(--ink); }
+.team-grid-service{ display:flex; justify-content:flex-start; flex-wrap:wrap; gap:clamp(1.25rem,3vw,2rem); }
+.team-member-service img{ width:120px; border-radius:50%; border:1px solid var(--line-strong); }
+
+/* ---- legacy team grid ---- */
+.team-grid{ grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:clamp(1.25rem,3vw,2rem); }
+.team-member{ background:var(--paper-2); border:1px solid var(--line); border-radius:var(--r); padding:1.25rem; }
+.team-member img{ width:100%; aspect-ratio:1/1; height:auto; object-fit:cover; border-radius:var(--r); }
+.team-member h3{ font-family:var(--serif); font-weight:400; font-size:1.05rem; color:var(--ink); }
+.team-member p{ font-size:.72rem; font-family:var(--mono); letter-spacing:.13em; text-transform:uppercase; color:var(--amber-text); }
+
+/* ---- legacy contact page ---- */
+.contact-section{ background:var(--paper-3); padding:clamp(2.5rem,6vw,4rem) 0; }
+.contact-box{
+  background:var(--paper-2); border:1px solid var(--line); border-radius:var(--r);
+  box-shadow:none; padding:1.5rem;
+}
+.contact-box h2{ font-family:var(--serif); font-weight:400; color:var(--ink); }
+.contact-box a, .contact-box i{ color:var(--amber-text); }
+.contact-details{ gap:2rem; }
+.contact-info, .contact-form{ padding:0; }
+.contact-form input, .contact-form textarea{
+  padding:.8rem; border:1px solid var(--line-strong); border-radius:var(--r);
+  background:var(--paper-2); font:inherit; color:var(--text);
+}
+.contact-form input:focus, .contact-form textarea:focus{ outline:2px solid var(--amber-text); outline-offset:2px; }
+.contact-form button{
+  background:var(--amber); color:var(--ink); border:0; border-radius:var(--r);
+  padding:.85rem 1.6rem; font-weight:600; cursor:pointer;
+  transition:background .18s var(--ease);
+}
+.contact-form button:hover{ background:#e08a45; }
+.contact-map iframe{ border-radius:var(--r); }
+
+/* ---- legacy blog / trending ---- */
+.trending-grid{ grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(1.25rem,3vw,2rem); }
+.trending-item{
+  background:var(--paper-2); border:1px solid var(--line); border-radius:var(--r);
+  box-shadow:none; padding:1.25rem; text-align:left;
+}
+.trending-item img{ border-radius:var(--r); aspect-ratio:3/2; object-fit:cover; }
+.trending-item a{ font-family:var(--serif); font-size:1.05rem; color:var(--ink); }
+.trending-item a:hover{ color:var(--amber-text); }
+
+/* ---- legacy testimonials ---- */
+.testimonials-grid{ grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(1.25rem,3vw,2rem); }
+.testimonial-item{
+  background:var(--paper-2); border:1px solid var(--line); border-radius:var(--r);
+  box-shadow:none; padding:1.5rem;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.testimonial-item:hover{ transform:translateY(-4px); box-shadow:0 10px 28px rgba(16,26,36,.10); }
+.testimonial-item p{ font-family:var(--serif); font-style:normal; color:var(--text); font-size:1.02rem; }
+.testimonial-item h4{ color:var(--ink); font-size:.95rem; }
+.testimonial-item span{ color:var(--muted); font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; }
+.client-photo{ border:1px solid var(--line-strong); }
+
+/* ---- legacy awards / thought leadership blocks ---- */
+#awards-accolades, #thought-leadership{
+  box-shadow:none; border-radius:var(--r); padding:clamp(2rem,5vw,3rem);
+}
+#awards-accolades{ background:var(--ink); color:var(--on-ink); }
+#awards-accolades h2, #awards-accolades h3{ color:var(--on-ink); font-family:var(--serif); font-weight:400; }
+#awards-accolades li{ color:var(--on-ink-mut); }
+#awards-accolades em{ color:var(--amber-soft); text-align:left; }
+#awards-accolades .award-img{ border-radius:var(--r); }
+#thought-leadership{ background:var(--paper-2); border:1px solid var(--line); }
+#thought-leadership h2{ font-family:var(--serif); font-weight:400; color:var(--ink); }
+#thought-leadership em{ color:var(--ink); text-align:left; }
+
+/* ---- legacy CTA band ---- */
+.contact-cta{ background:var(--ink-3); padding:clamp(2.5rem,6vw,4rem) 0; text-align:left; }
+.contact-cta h2{ color:var(--on-ink); font-family:var(--serif); font-weight:400; }
+.contact-cta .btn{ background:var(--amber); color:var(--ink); }
+
+/* ---- legacy footer markup ---- */
+footer{ background:var(--ink-3); color:var(--on-ink); padding:0; text-align:left; }
+.footer{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; padding-block:2.5rem; }
+.footer-section{ width:auto; padding:0; }
+.footer-section h3{
+  color:var(--amber-soft); font-family:var(--mono); font-size:.68rem;
+  letter-spacing:.15em; text-transform:uppercase; font-weight:500;
+}
+.footer-section ul li a{ color:var(--on-ink-mut); }
+.footer-section ul li a:hover{ color:var(--amber-soft); }
+.footer-section p{ color:var(--on-ink-mut); font-size:.9rem; }
+.footer-bottom{ border-top:1px solid rgba(239,233,223,.14); padding:1.4rem 0; }
+.footer-bottom p{ font-family:var(--mono); font-size:.65rem; letter-spacing:.08em; color:var(--on-ink-mut); text-align:center; }
+.social-media img{ width:26px; border-radius:var(--r); }
+
+/* ---- responsive fixes the old sheet never had ---- */
+@media (max-width:768px){
+  .service-single-content, .why-choose-service{ padding:1.25rem; }
+  header .container{ flex-wrap:wrap; gap:1rem; }
+  header nav ul{ flex-wrap:wrap; gap:.9rem 1.2rem; }
+  .contact-details{ flex-direction:column; }
+  .contact-section .container{ flex-direction:column; }
+  .benefit{ flex-direction:column; align-items:flex-start; }
+  #awards-accolades .award-img{ width:100%; height:auto; aspect-ratio:3/2; }
+  .awards-images, .award-images{ flex-wrap:wrap; }
+}
